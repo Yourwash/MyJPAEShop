@@ -4,23 +4,18 @@
  */
 package controllers;
 
-import dao.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Customer;
 
 /**
  *
  * @author George.Pasparakis
  */
-public class CustomerController extends HttpServlet {
-    
-    private CustomerDAO dao = new CustomerDAO();
+public class ProductController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,15 +34,16 @@ public class CustomerController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CustomerController</title>");            
+            out.println("<title>Servlet ProductController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CustomerController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProductController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -59,10 +55,7 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Customer c1 = dao.create();
-        request.setAttribute("customer", c1);
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/customer.jsp");
-        rd.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -87,6 +80,6 @@ public class CustomerController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }
